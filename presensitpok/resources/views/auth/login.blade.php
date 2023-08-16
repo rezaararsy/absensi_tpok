@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#004AAD">
-    <title>E-Presensi TPOK</title>
+    <title>E-Presensi Geolocation</title>
     <meta name="description" content="Mobilekit HTML Mobile UI Kit">
     <meta name="keywords" content="bootstrap 4, mobile template, cordova, phonegap, mobile, html" />
     <link rel="icon" type="image/png" href="{{ asset('icon-512.png') }}" sizes="32x32">
@@ -29,9 +29,6 @@
     <div id="appCapsule" class="pt-0">
 
         <div class="login-form mt-1">
-            <div class="section">
-                <img src="{{ asset('assets/img/malang.png') }}" alt="image" style="width: 30px;" class="form-image">
-            </div>
             <div class="section">
                 <img src="{{ asset('assets/img/login/login.webp') }}" alt="image" class="form-image">
             </div>

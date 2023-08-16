@@ -12,7 +12,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Administrator</title>
+    <title>Sign in with illustration - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
     <!-- CSS files -->
     <link href="{{ asset('tabler/dist/css/tabler.min.css?1674944402') }}" rel="stylesheet" />
     <link href="{{ asset('tabler/dist/css/tabler-flags.min.css?1674944402') }}" rel="stylesheet" />
@@ -44,8 +44,7 @@
                         </div>
                         <div class="card card-md">
                             <div class="card-body">
-                                <img src="{{ asset('assets/img/malang.png') }}" alt="image" style="width: 40px; margin-left: 20px; " class="form-image">
-                                <h2 class="h2 text-center mb-4">Administrator Login</h2>
+                                <h2 class="h2 text-center mb-4">Login to your account</h2>
                                 @if (Session::get('warning'))
                                 <div class="alert alert-warning">
                                     <p>{{ Session::get('warning') }}</p>

@@ -5,7 +5,7 @@
         </button>
         <h1 class="navbar-brand navbar-brand-autodark">
             <a href=".">
-                <img src="{{ asset('assets/img/malang.png') }}" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+                <img src="{{ asset('tabler/static/logo-white.svg') }}" width="110" height="32" alt="Tabler" class="navbar-brand-image">
             </a>
         </h1>
         <div class="navbar-nav flex-row d-lg-none">
@@ -173,7 +173,7 @@
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle {{ request()->is(['karyawan','departemen']) ? 'show' : '' }}" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="{{ request()->is(['karyawan','departemen']) ? 'true' : '' }}">
+                    <a class="nav-link dropdown-toggle {{ request()->is(['karyawan','departemen','cabang']) ? 'show' : '' }}" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="{{ request()->is(['karyawan','departemen','cabang']) ? 'true' : '' }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <!-- Download SVG icon from http://tabler-icons.io/i/package -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -200,7 +200,6 @@
                                 <a class="dropdown-item {{ request()->is(['cabang']) ? 'active' : '' }}" href="/cabang">
                                     Kantor Cabang
                                 </a>
-
                             </div>
                         </div>
                     </div>
