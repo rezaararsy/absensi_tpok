@@ -187,16 +187,17 @@
 
         <table width="100%" style="margin-top:100px">
             <tr>
-                <td colspan="2" style="text-align: right">Malang, {{ date('d-m-Y') }}</td>
+                <td colspan="2" style="text-align: center">Malang, {{ date('d-m-Y') }} <br>
+                    <i><b>Kepala Dinas Dispenduk Capil Kota Malang</b></i>
+                </td>
             </tr>
             <tr>
                 <td style="text-align: center; vertical-align:bottom" height="100px">
-                    <u>....</u><br>
-                    <i><b>Kepala ...</b></i>
+                    
                 </td>
                 <td style="text-align: center; vertical-align:bottom">
                     <u>Ir. Dahliana Lusi Ratnasari, M.M</u><br>
-                    <i><b>Kepala Dinas Dispenduk Capil Kota Malang</b></i>
+                    <i>NIP: </i>
                 </td>
             </tr>
         </table>
