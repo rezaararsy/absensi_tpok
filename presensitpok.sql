@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 11, 2023 at 08:17 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Waktu pembuatan: 11 Sep 2023 pada 04.10
+-- Versi server: 10.4.27-MariaDB
+-- Versi PHP: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cabang`
+-- Struktur dari tabel `cabang`
 --
 
 CREATE TABLE `cabang` (
@@ -35,18 +35,27 @@ CREATE TABLE `cabang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
--- Dumping data for table `cabang`
+-- Dumping data untuk tabel `cabang`
 --
 
 INSERT INTO `cabang` (`kode_cabang`, `nama_cabang`, `lokasi_cabang`, `radius_cabang`) VALUES
-('AJW', 'ARJOWINANGUN', '-8.0384107,112.6421868', 20),
-('CPL', 'Kantor Dukcapil Mlg', '-8.0321902,112.6419777', 40),
-('PW', 'Kelurahan Polowijen', '-7.9312593,112.6481515', 100);
+('ARJ', 'Arjosari', '-7.927931,112.6507148', 400),
+('BLB', 'Blimbing', '-7.9442815,112.6442485', 400),
+('BLJ', 'Balearjosari', '-7.9237869,112.6487799', 400),
+('BNL', 'Bunulrejo', '-7.96916,112.6400831', 400),
+('CPL', 'Kantor Dukcapil Malang', '-8.0303089,112.639816', 400),
+('JDP', 'Jodipan', '-7.987461,112.6367449', 400),
+('KST', 'Kesatrian', '-7.9771918,112.6362725', 400),
+('PDW', 'Pandanwangi', '-7.9463021,112.6558952', 400),
+('PLH', 'Polehan', '-7.987586,112.6424681', 400),
+('PWD', 'Purwodadi', '-7.9357531,112.6429654', 400),
+('PWJ', 'Polowijen', '-7.931262,112.6455678', 400),
+('PWT', 'Purwantoro', '-7.9534574,112.6453152', 400);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `departemen`
+-- Struktur dari tabel `departemen`
 --
 
 CREATE TABLE `departemen` (
@@ -55,7 +64,7 @@ CREATE TABLE `departemen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
--- Dumping data for table `departemen`
+-- Dumping data untuk tabel `departemen`
 --
 
 INSERT INTO `departemen` (`kode_dept`, `nama_dept`) VALUES
@@ -68,7 +77,7 @@ INSERT INTO `departemen` (`kode_dept`, `nama_dept`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jam_kerja`
+-- Struktur dari tabel `jam_kerja`
 --
 
 CREATE TABLE `jam_kerja` (
@@ -81,18 +90,18 @@ CREATE TABLE `jam_kerja` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
--- Dumping data for table `jam_kerja`
+-- Dumping data untuk tabel `jam_kerja`
 --
 
 INSERT INTO `jam_kerja` (`kode_jam_kerja`, `nama_jam_kerja`, `awal_jam_masuk`, `jam_masuk`, `akhir_jam_masuk`, `jam_pulang`) VALUES
-('JK01', 'NON SHIFT', '05:00:00', '14:00:00', '15:00:00', '16:00:00'),
+('JK01', 'NON SHIFT', '05:00:00', '06:00:00', '16:00:00', '13:00:00'),
 ('JK02', 'NON SHIFT SABTU', '05:00:00', '07:00:00', '23:59:00', '12:00:00'),
 ('SH01', 'SHIFT 1', '06:00:00', '07:00:00', '08:00:00', '12:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `karyawan`
+-- Struktur dari tabel `karyawan`
 --
 
 CREATE TABLE `karyawan` (
@@ -108,11 +117,11 @@ CREATE TABLE `karyawan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
--- Dumping data for table `karyawan`
+-- Dumping data untuk tabel `karyawan`
 --
 
 INSERT INTO `karyawan` (`nik`, `nama_lengkap`, `jabatan`, `no_hp`, `foto`, `kode_dept`, `kode_cabang`, `password`, `remember_token`) VALUES
-('12345', 'Karyawan 2', 'Head of IT', '089670444322', '12345.jpg', 'IT', 'AJW', '$2y$10$PzJrLtRr65wUG.3IzJ4Ks.fWJ7H..PwJmgMqaxRVFy87kx1KQzumq', NULL),
+('12345', 'Karyawan 2', 'Head of IT', '089670444322', '12345.jpg', 'IT', 'CPL', '$2y$10$PzJrLtRr65wUG.3IzJ4Ks.fWJ7H..PwJmgMqaxRVFy87kx1KQzumq', NULL),
 ('12346', 'Karyawan 1', 'Manager HRD', '0', NULL, 'HRD', 'CPL', '$2y$10$QdMrj.oWK5jA0vutnR5jl.gL2cSAjoFjfGtf6MfsgF7mKhAHlBsAG', NULL),
 ('12347', 'Dinda', 'Accounting', '0', NULL, 'KEU', 'BDG', '$2y$10$u.Cpy.8nxTlHUJFMB2lHTeSyQpOw2Zx7MRu2fuT/nndxMigccZWFW', NULL),
 ('12349', 'Indira', 'Staff IT', '0899999', '12349.jpg', 'IT', 'BDG', '$2y$10$u.Cpy.8nxTlHUJFMB2lHTeSyQpOw2Zx7MRu2fuT/nndxMigccZWFW', NULL),
@@ -121,7 +130,7 @@ INSERT INTO `karyawan` (`nik`, `nama_lengkap`, `jabatan`, `no_hp`, `foto`, `kode
 -- --------------------------------------------------------
 
 --
--- Table structure for table `konfigurasi_jamkerja`
+-- Struktur dari tabel `konfigurasi_jamkerja`
 --
 
 CREATE TABLE `konfigurasi_jamkerja` (
@@ -131,7 +140,7 @@ CREATE TABLE `konfigurasi_jamkerja` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
--- Dumping data for table `konfigurasi_jamkerja`
+-- Dumping data untuk tabel `konfigurasi_jamkerja`
 --
 
 INSERT INTO `konfigurasi_jamkerja` (`nik`, `hari`, `kode_jam_kerja`) VALUES
@@ -157,7 +166,7 @@ INSERT INTO `konfigurasi_jamkerja` (`nik`, `hari`, `kode_jam_kerja`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `konfigurasi_lokasi`
+-- Struktur dari tabel `konfigurasi_lokasi`
 --
 
 CREATE TABLE `konfigurasi_lokasi` (
@@ -167,16 +176,16 @@ CREATE TABLE `konfigurasi_lokasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
--- Dumping data for table `konfigurasi_lokasi`
+-- Dumping data untuk tabel `konfigurasi_lokasi`
 --
 
 INSERT INTO `konfigurasi_lokasi` (`id`, `lokasi_kantor`, `radius`) VALUES
-(1, '-8.0321902,112.6419777', 40);
+(1, '-8.0303089,112.639816', 50);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Struktur dari tabel `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -188,7 +197,7 @@ CREATE TABLE `migrations` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengajuan_izin`
+-- Struktur dari tabel `pengajuan_izin`
 --
 
 CREATE TABLE `pengajuan_izin` (
@@ -201,21 +210,22 @@ CREATE TABLE `pengajuan_izin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
--- Dumping data for table `pengajuan_izin`
+-- Dumping data untuk tabel `pengajuan_izin`
 --
 
 INSERT INTO `pengajuan_izin` (`id`, `nik`, `tgl_izin`, `status`, `keterangan`, `status_approved`) VALUES
-(2, '12345', '2023-02-23', 'i', 'Jenguk Saudara yang Sakit', '2'),
+(2, '12345', '2023-02-23', 'i', 'Jenguk Saudara yang Sakit', '0'),
 (3, '12345', '2023-02-23', 's', 'Mag', '0'),
 (4, '12345', '2023-02-23', 'i', 'Mau Ke Rumah Saudara', '0'),
-(5, '12346', '2023-03-14', 'i', 'Harus Datang Ke Acara Pernikahan Saudara', '2'),
+(5, '12346', '2023-03-14', 'i', 'Harus Datang Ke Acara Pernikahan Saudara', '0'),
 (6, '8888', '2023-03-21', 'i', 'Ada Acara Keluarga', '1'),
-(7, '12346', '2023-08-10', 's', 'sakit kelapa', '0');
+(7, '12346', '2023-08-10', 's', 'sakit kelapa', '1'),
+(8, '12345', '2023-08-30', 'i', 'kmmk', '0');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `presensi`
+-- Struktur dari tabel `presensi`
 --
 
 CREATE TABLE `presensi` (
@@ -232,19 +242,21 @@ CREATE TABLE `presensi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
--- Dumping data for table `presensi`
+-- Dumping data untuk tabel `presensi`
 --
 
 INSERT INTO `presensi` (`id`, `nik`, `tgl_presensi`, `jam_in`, `jam_out`, `foto_in`, `foto_out`, `lokasi_in`, `lokasi_out`, `kode_jam_kerja`) VALUES
 (34, '12345', '2023-06-21', '07:24:08', NULL, '12345-2023-06-21-in.png', NULL, '-7.2912792500000005,108.231705', NULL, 'JK01'),
 (35, '12346', '2023-06-21', '07:24:59', NULL, '12346-2023-06-21-in.png', NULL, '-7.2912792500000005,108.231705', NULL, 'JK02'),
 (36, '12346', '2023-06-24', '23:18:23', '23:18:40', '12346-2023-06-24-in.png', '12346-2023-06-24-out.png', '-7.2912792500000005,108.231705', '-7.2912792500000005,108.231705', 'JK02'),
-(37, '12346', '2023-08-07', '14:44:09', NULL, '12346-2023-08-07-in.png', NULL, '-8.0322074,112.6419145', NULL, 'JK01');
+(37, '12346', '2023-08-07', '14:44:09', NULL, '12346-2023-08-07-in.png', NULL, '-8.0322074,112.6419145', NULL, 'JK01'),
+(38, '12346', '2023-08-11', '13:52:56', '13:57:03', '12346-2023-08-11-in.png', '12346-2023-08-11-out.png', '-8.0322017,112.64194', '-8.0322397,112.6419476', 'JK01'),
+(39, '12345', '2023-08-30', '15:14:49', '15:16:12', '12345-2023-08-30-in.png', '12345-2023-08-30-out.png', '-8.0321859,112.6419419', '-8.0321835,112.6419402', 'JK01');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -259,101 +271,101 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$u.Cpy.8nxTlHUJFMB2lHTeSyQpOw2Zx7MRu2fuT/nndxMigccZWFW', NULL, NULL, NULL);
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$HrxuVDDbjxutfGibruC27edSEeH262Oxbe4IbPG6pHLfs.RHym2AW', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `cabang`
+-- Indeks untuk tabel `cabang`
 --
 ALTER TABLE `cabang`
   ADD PRIMARY KEY (`kode_cabang`) USING BTREE;
 
 --
--- Indexes for table `departemen`
+-- Indeks untuk tabel `departemen`
 --
 ALTER TABLE `departemen`
   ADD PRIMARY KEY (`kode_dept`) USING BTREE;
 
 --
--- Indexes for table `jam_kerja`
+-- Indeks untuk tabel `jam_kerja`
 --
 ALTER TABLE `jam_kerja`
   ADD PRIMARY KEY (`kode_jam_kerja`) USING BTREE;
 
 --
--- Indexes for table `karyawan`
+-- Indeks untuk tabel `karyawan`
 --
 ALTER TABLE `karyawan`
   ADD PRIMARY KEY (`nik`) USING BTREE;
 
 --
--- Indexes for table `konfigurasi_lokasi`
+-- Indeks untuk tabel `konfigurasi_lokasi`
 --
 ALTER TABLE `konfigurasi_lokasi`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
--- Indexes for table `migrations`
+-- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pengajuan_izin`
+-- Indeks untuk tabel `pengajuan_izin`
 --
 ALTER TABLE `pengajuan_izin`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
--- Indexes for table `presensi`
+-- Indeks untuk tabel `presensi`
 --
 ALTER TABLE `presensi`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`) USING BTREE,
   ADD UNIQUE KEY `users_email_unique` (`email`) USING BTREE;
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `konfigurasi_lokasi`
+-- AUTO_INCREMENT untuk tabel `konfigurasi_lokasi`
 --
 ALTER TABLE `konfigurasi_lokasi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `pengajuan_izin`
+-- AUTO_INCREMENT untuk tabel `pengajuan_izin`
 --
 ALTER TABLE `pengajuan_izin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `presensi`
+-- AUTO_INCREMENT untuk tabel `presensi`
 --
 ALTER TABLE `presensi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
