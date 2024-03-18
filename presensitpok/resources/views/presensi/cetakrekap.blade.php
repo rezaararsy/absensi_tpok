@@ -15,7 +15,7 @@
     <!-- Set also "landscape" if you need -->
     <style>
         @page {
-            size: A4
+            size: legal
         }
 
         #title {
@@ -62,22 +62,23 @@
 
 <!-- Set "A5", "A4" or "A3" for class name -->
 <!-- Set also "landscape" if you need -->
-<body class="A4 landscape">
+<!-- <body class="A4 landscape"> -->
+<body class="">
     <?php
-    function selisih($jam_masuk, $jam_keluar)
-    {
-        list($h, $m, $s) = explode(":", $jam_masuk);
-        $dtAwal = mktime($h, $m, $s, "1", "1", "1");
-        list($h, $m, $s) = explode(":", $jam_keluar);
-        $dtAkhir = mktime($h, $m, $s, "1", "1", "1");
-        $dtSelisih = $dtAkhir - $dtAwal;
-        $totalmenit = $dtSelisih / 60;
-        $jam = explode(".", $totalmenit / 60);
-        $sisamenit = ($totalmenit / 60) - $jam[0];
-        $sisamenit2 = $sisamenit * 60;
-        $jml_jam = $jam[0];
-        return $jml_jam . ":" . round($sisamenit2);
-    }
+    // function selisih($jam_masuk, $jam_keluar)
+    // {
+    //     list($h, $m, $s) = explode(":", $jam_masuk);
+    //     $dtAwal = mktime($h, $m, $s, "1", "1", "1");
+    //     list($h, $m, $s) = explode(":", $jam_keluar);
+    //     $dtAkhir = mktime($h, $m, $s, "1", "1", "1");
+    //     $dtSelisih = $dtAkhir - $dtAwal;
+    //     $totalmenit = $dtSelisih / 60;
+    //     $jam = explode(".", $totalmenit / 60);
+    //     $sisamenit = ($totalmenit / 60) - $jam[0];
+    //     $sisamenit2 = $sisamenit * 60;
+    //     $jml_jam = $jam[0];
+    //     return $jml_jam . ":" . round($sisamenit2);
+    // }
     ?>
     <!-- Each sheet element should have the class "sheet" -->
     <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
@@ -126,8 +127,18 @@
                 $totalterlambat = 0;
                 for($i=1; $i<=31; $i++){
                     $tgl = "tgl_".$i;
+                    
                     if(empty($d->$tgl)){
-                        $hadir = ['',''];
+                        for($j=1; $j<count($izin); $j++){
+                            if($tgl==$izin[$j]->tglnya && $d->nik==$izin[$j]->nik){
+                                $hadir = ['IZIN', ''];
+                            }else{
+                                $hadir = ['', ''];
+                            }
+                            // $hadir = ['', $izin[1]->nik];
+                        }
+                        //$hadir = ['', ''];
+                        // $hadir = ['',''];
                         $totalhadir += 0;
                     }else{
                         $hadir = explode("-",$d->$tgl);

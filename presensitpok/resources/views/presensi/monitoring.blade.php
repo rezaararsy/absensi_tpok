@@ -54,7 +54,8 @@
                                             <th>Jam Pulang</th>
                                             <th>Foto</th>
                                             <th>Keterangan</th>
-                                            <th></th>
+                                            <th>Lokasi Masuk</th>
+                                            <th>Lokasi Pulang</th>
                                         </tr>
                                     </thead>
                                     <tbody id="loadpresensi"></tbody>
@@ -71,10 +72,24 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Lokasi Presensi User</h5>
+                <h5 class="modal-title">Lokasi Presensi Masuk User</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="loadmap">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal modal-blur fade" id="modal-tampilkanpeta2" tabindex="-2" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Lokasi Presensi Pulang User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="loadmap2">
 
             </div>
 
