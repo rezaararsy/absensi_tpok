@@ -137,9 +137,9 @@
                 <th>No.</th>
                 <th>Tanggal</th>
                 <th>Jam Masuk</th>
-                <th>Foto</th>
+                <!-- <th>Foto</th> -->
                 <th>Jam Pulang</th>
-                <th>Foto</th>
+                <!-- <th>Foto</th> -->
                 <th>Keterangan</th>
                 <th>Jml Jam</th>
             </tr>
@@ -153,15 +153,15 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ date("d-m-Y",strtotime($d->tgl_presensi)) }}</td>
                 <td>{{ $d->jam_in }}</td>
-                <td><img src="{{ url($path_in) }}" alt="" class="foto"></td>
+                <!-- <td><img src="{{ url($path_in) }}" alt="" class="foto"></td> -->
                 <td>{{ $d->jam_out != null ? $d->jam_out : 'Belum Absen' }}</td>
-                <td>
+                <!-- <td>
                     @if ($d->jam_out != null)
                     <img src="{{ url($path_out) }}" alt="" class="foto">
                     @else
                     <img src="{{ asset('assets/img/camera.jpg') }}" alt="" class="foto">
                     @endif
-                </td>
+                </td> -->
                 <td>
                     @if ($d->jam_in > $d->jam_masuk)
                     Terlambat {{ $jamterlambat }}

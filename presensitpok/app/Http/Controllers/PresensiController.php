@@ -366,45 +366,86 @@ class PresensiController extends Controller
         $bulan = $request->bulan;       
         $tahun = $request->tahun;
         $izin = DB::table('pengajuan_izin')
-            ->selectRaw('nik,tgl_izin as tglnya,status')
-            ->selectRaw('
-                DAY(tgl_izin) = 1 as tgl_1,
-                DAY(tgl_izin) = 2 as tgl_2,
-                DAY(tgl_izin) = 3 as tgl_3,
-                DAY(tgl_izin) = 4 as tgl_4,
-                DAY(tgl_izin) = 5 as tgl_5,
-                DAY(tgl_izin) = 6 as tgl_6,
-                DAY(tgl_izin) = 7 as tgl_7,
-                DAY(tgl_izin) = 8 as tgl_8,
-                DAY(tgl_izin) = 9 as tgl_9,
-                DAY(tgl_izin) = 10 as tgl_10,
-                DAY(tgl_izin) = 11 as tgl_11,
-                DAY(tgl_izin) = 12 as tgl_12,
-                DAY(tgl_izin) = 13 as tgl_13,
-                DAY(tgl_izin) = 14 as tgl_14,
-                DAY(tgl_izin) = 15 as tgl_15,
-                DAY(tgl_izin) = 16 as tgl_16,
-                DAY(tgl_izin) = 17 as tgl_17,
-                DAY(tgl_izin) = 18 as tgl_18,
-                DAY(tgl_izin) = 19 as tgl_19,
-                DAY(tgl_izin) = 20 as tgl_20,
-                DAY(tgl_izin) = 21 as tgl_21,
-                DAY(tgl_izin) = 22 as tgl_22,
-                DAY(tgl_izin) = 23 as tgl_23,
-                DAY(tgl_izin) = 24 as tgl_24,
-                DAY(tgl_izin) = 25 as tgl_25,
-                DAY(tgl_izin) = 26 as tgl_26,
-                DAY(tgl_izin) = 27 as tgl_27,
-                DAY(tgl_izin) = 28 as tgl_28,
-                DAY(tgl_izin) = 29 as tgl_29,
-                DAY(tgl_izin) = 30 as tgl_30,
-                DAY(tgl_izin) = 31 as tgl_31')
+            ->selectRaw('nik,CONCAT("tgl_",DAY(tgl_izin)) as tglnya,status')
+            // ->selectRaw('
+            //     DAY(tgl_izin) = 1 as tgl_1,
+            //     DAY(tgl_izin) = 2 as tgl_2,
+            //     DAY(tgl_izin) = 3 as tgl_3,
+            //     DAY(tgl_izin) = 4 as tgl_4,
+            //     DAY(tgl_izin) = 5 as tgl_5,
+            //     DAY(tgl_izin) = 6 as tgl_6,
+            //     DAY(tgl_izin) = 7 as tgl_7,
+            //     DAY(tgl_izin) = 8 as tgl_8,
+            //     DAY(tgl_izin) = 9 as tgl_9,
+            //     DAY(tgl_izin) = 10 as tgl_10,
+            //     DAY(tgl_izin) = 11 as tgl_11,
+            //     DAY(tgl_izin) = 12 as tgl_12,
+            //     DAY(tgl_izin) = 13 as tgl_13,
+            //     DAY(tgl_izin) = 14 as tgl_14,
+            //     DAY(tgl_izin) = 15 as tgl_15,
+            //     DAY(tgl_izin) = 16 as tgl_16,
+            //     DAY(tgl_izin) = 17 as tgl_17,
+            //     DAY(tgl_izin) = 18 as tgl_18,
+            //     DAY(tgl_izin) = 19 as tgl_19,
+            //     DAY(tgl_izin) = 20 as tgl_20,
+            //     DAY(tgl_izin) = 21 as tgl_21,
+            //     DAY(tgl_izin) = 22 as tgl_22,
+            //     DAY(tgl_izin) = 23 as tgl_23,
+            //     DAY(tgl_izin) = 24 as tgl_24,
+            //     DAY(tgl_izin) = 25 as tgl_25,
+            //     DAY(tgl_izin) = 26 as tgl_26,
+            //     DAY(tgl_izin) = 27 as tgl_27,
+            //     DAY(tgl_izin) = 28 as tgl_28,
+            //     DAY(tgl_izin) = 29 as tgl_29,
+            //     DAY(tgl_izin) = 30 as tgl_30,
+            //     DAY(tgl_izin) = 31 as tgl_31'
+            //     )
             ->whereRaw('MONTH(tgl_izin)="' . $bulan . '"')
             ->whereRaw('YEAR(tgl_izin)="' . $tahun . '"')
             ->get();
         $namabulan = ["", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+        // $rekap = DB::table('presensi')
+        //     ->selectRaw('presensi.nik,nama_lengkap,jam_masuk,jam_pulang,
+        //         MAX(IF(DAY(tgl_presensi) = 1,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_1,
+        //         MAX(IF(DAY(tgl_presensi) = 2,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_2,
+        //         MAX(IF(DAY(tgl_presensi) = 3,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_3,
+        //         MAX(IF(DAY(tgl_presensi) = 4,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_4,
+        //         MAX(IF(DAY(tgl_presensi) = 5,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_5,
+        //         MAX(IF(DAY(tgl_presensi) = 6,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_6,
+        //         MAX(IF(DAY(tgl_presensi) = 7,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_7,
+        //         MAX(IF(DAY(tgl_presensi) = 8,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_8,
+        //         MAX(IF(DAY(tgl_presensi) = 9,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_9,
+        //         MAX(IF(DAY(tgl_presensi) = 10,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_10,
+        //         MAX(IF(DAY(tgl_presensi) = 11,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_11,
+        //         MAX(IF(DAY(tgl_presensi) = 12,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_12,
+        //         MAX(IF(DAY(tgl_presensi) = 13,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_13,
+        //         MAX(IF(DAY(tgl_presensi) = 14,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_14,
+        //         MAX(IF(DAY(tgl_presensi) = 15,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_15,
+        //         MAX(IF(DAY(tgl_presensi) = 16,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_16,
+        //         MAX(IF(DAY(tgl_presensi) = 17,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_17,
+        //         MAX(IF(DAY(tgl_presensi) = 18,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_18,
+        //         MAX(IF(DAY(tgl_presensi) = 19,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_19,
+        //         MAX(IF(DAY(tgl_presensi) = 20,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_20,
+        //         MAX(IF(DAY(tgl_presensi) = 21,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_21,
+        //         MAX(IF(DAY(tgl_presensi) = 22,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_22,
+        //         MAX(IF(DAY(tgl_presensi) = 23,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_23,
+        //         MAX(IF(DAY(tgl_presensi) = 24,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_24,
+        //         MAX(IF(DAY(tgl_presensi) = 25,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_25,
+        //         MAX(IF(DAY(tgl_presensi) = 26,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_26,
+        //         MAX(IF(DAY(tgl_presensi) = 27,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_27,
+        //         MAX(IF(DAY(tgl_presensi) = 28,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_28,
+        //         MAX(IF(DAY(tgl_presensi) = 29,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_29,
+        //         MAX(IF(DAY(tgl_presensi) = 30,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_30,
+        //         MAX(IF(DAY(tgl_presensi) = 31,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_31')
+        //     ->join('karyawan', 'presensi.nik', '=', 'karyawan.nik')
+        //     ->leftJoin('jam_kerja', 'presensi.kode_jam_kerja', '=', 'jam_kerja.kode_jam_kerja')
+        //     ->whereRaw('MONTH(tgl_presensi)="' . $bulan . '"')
+        //     ->whereRaw('YEAR(tgl_presensi)="' . $tahun . '"')
+        //     //->groupByRaw('presensi.nik,jam_masuk,jam_pulang')
+        //     ->groupByRaw('presensi.nik,nama_lengkap,jam_masuk,jam_pulang')
+        //     ->get();
         $rekap = DB::table('presensi')
-            ->selectRaw('presensi.nik,nama_lengkap,jam_masuk,jam_pulang,
+            ->selectRaw('presensi.nik,nama_lengkap,
                 MAX(IF(DAY(tgl_presensi) = 1,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_1,
                 MAX(IF(DAY(tgl_presensi) = 2,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_2,
                 MAX(IF(DAY(tgl_presensi) = 3,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_3,
@@ -437,11 +478,11 @@ class PresensiController extends Controller
                 MAX(IF(DAY(tgl_presensi) = 30,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_30,
                 MAX(IF(DAY(tgl_presensi) = 31,CONCAT(jam_in,"-",IFNULL(jam_out,"00:00:00")),"")) as tgl_31')
             ->join('karyawan', 'presensi.nik', '=', 'karyawan.nik')
-            ->leftJoin('jam_kerja', 'presensi.kode_jam_kerja', '=', 'jam_kerja.kode_jam_kerja')
+            // ->leftJoin('jam_kerja', 'presensi.kode_jam_kerja', '=', 'jam_kerja.kode_jam_kerja')
             ->whereRaw('MONTH(tgl_presensi)="' . $bulan . '"')
             ->whereRaw('YEAR(tgl_presensi)="' . $tahun . '"')
             //->groupByRaw('presensi.nik,jam_masuk,jam_pulang')
-            ->groupByRaw('presensi.nik,nama_lengkap,jam_masuk,jam_pulang')
+            ->groupByRaw('presensi.nik,nama_lengkap')
             ->get();
 
         if (isset($_POST['exportexcel'])) {
@@ -451,7 +492,7 @@ class PresensiController extends Controller
             // Mendefinisikan nama file ekspor "hasil-export.xls"
             header("Content-Disposition: attachment; filename=Rekap Presensi Karyawan $time.xls");
         }
-        //echo $izin;
+        echo $izin;
         return view('presensi.cetakrekap', compact('bulan', 'tahun', 'namabulan', 'rekap', 'izin'));
     }
 
